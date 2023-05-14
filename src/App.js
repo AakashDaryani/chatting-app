@@ -1,24 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useState } from "react";
+import CreateChat from "./CreateChat";
+import LoginPage from "./LoginPage";
 function App() {
+  const[showPage,setShowPage] = useState(false);
+  const[user,setuser] = useState('');
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <>
+    {showPage == false?<LoginPage setShowPage={setShowPage} setuser={setuser}/>:null}
+    {showPage == true?<CreateChat user={user}/>:null}
+   </>
   );
 }
 
